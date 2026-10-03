@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login | SecureSpace</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <main class="auth-page">
+    <section class="auth-card fade-in">
+      <div class="brand">
+        <div class="logo">S</div>
+        <div>
+          <h1>Welcome back</h1>
+          <p>Log in to your secure profile.</p>
+        </div>
+      </div>
+
+      <% if (error) { %>
+        <div class="alert"><%= error %></div>
+      <% } %>
+
+      <% if (success) { %>
+        <div class="notice"><%= success %></div>
+      <% } %>
+
+      <form action="/login" method="POST">
+        <label for="email">Email address</label>
+        <input id="email" name="email" type="email" placeholder="you@example.com" required />
+
+        <label for="password">Password</label>
+        <div class="password-wrap">
+          <input id="password" name="password" type="password" placeholder="Enter your password" required />
+          <button class="show-password" type="button" data-target="password">Show</button>
+        </div>
+
+        <button type="submit">Log in securely</button>
+      </form>
+
+      <p class="switch-text">
+        Need an account? <a href="/register">Create one</a>
+      </p>
+    </section>
+  </main>
+
+  <script src="/script.js"></script>
+</body>
+</html>

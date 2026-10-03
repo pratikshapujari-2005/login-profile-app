@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Profile | SecureSpace</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <a class="nav-brand" href="/dashboard">SecureSpace</a>
+
+    <div class="nav-links">
+      <a href="/dashboard">Dashboard</a>
+      <form action="/logout" method="POST">
+        <button class="logout-button" type="submit">Log out</button>
+      </form>
+    </div>
+  </nav>
+
+  <main>
+    <section class="profile-card fade-in">
+      <% if (success) { %>
+        <div class="notice"><%= success %></div>
+      <% } %>
+
+      <% if (error) { %>
+        <div class="alert"><%= error %></div>
+      <% } %>
+
+      <div class="avatar">
+        <%= user.name.charAt(0).toUpperCase() %>
+      </div>
+
+      <p class="eyebrow">YOUR PROFILE</p>
+      <h1><%= user.name %></h1>
+      <p class="subtitle"><%= user.bio || "Add a short bio to personalize your profile." %></p>
+
+      <div class="details">
+        <div class="detail-row">
+          <span>Email address</span>
+          <strong><%= user.email %></strong>
+        </div>
+
+        <div class="detail-row">
+          <span>Member since</span>
+          <strong><%= new Date(user.created_at).toLocaleDateString() %></strong>
+        </div>
+
+        <div class="detail-row">
+          <span>Access status</span>
+          <strong class="success-text">Authenticated</strong>
+        </div>
+      </div>
+
+      <div class="profile-actions">
+        <a class="secondary-button" href="/profile/edit">Edit profile</a>
+        <a class="secondary-button" href="/dashboard">Go to dashboard</a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

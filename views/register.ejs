@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Create Account | SecureSpace</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <main class="auth-page">
+    <section class="auth-card fade-in">
+      <div class="brand">
+        <div class="logo">S</div>
+        <div>
+          <h1>Create account</h1>
+          <p>Start your secure member experience.</p>
+        </div>
+      </div>
+
+      <% if (error) { %>
+        <div class="alert"><%= error %></div>
+      <% } %>
+
+      <form action="/register" method="POST">
+        <label for="name">Full name</label>
+        <input id="name" name="name" type="text" placeholder="Enter your full name" required />
+
+        <label for="email">Email address</label>
+        <input id="email" name="email" type="email" placeholder="you@example.com" required />
+
+        <label for="password">Password</label>
+        <div class="password-wrap">
+          <input id="password" name="password" type="password" placeholder="At least 8 characters" required />
+          <button class="show-password" type="button" data-target="password">Show</button>
+        </div>
+
+        <div class="strength-container">
+          <div class="strength-bars">
+            <span></span><span></span><span></span><span></span>
+          </div>
+          <small id="strength-label" class="strength-label">Password strength will appear here.</small>
+        </div>
+
+        <label for="confirmPassword">Confirm password</label>
+        <div class="password-wrap">
+          <input id="confirmPassword" name="confirmPassword" type="password" placeholder="Repeat your password" required />
+          <button class="show-password" type="button" data-target="confirmPassword">Show</button>
+        </div>
+
+        <button type="submit">Create my account</button>
+      </form>
+
+      <p class="switch-text">
+        Already have an account? <a href="/login">Log in</a>
+      </p>
+    </section>
+  </main>
+
+  <script src="/script.js"></script>
+</body>
+</html>
